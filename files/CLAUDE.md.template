@@ -1,0 +1,29 @@
+<!-- context-pack:start (managed by the Context Pack installer; edit freely, re-running the installer won't overwrite it) -->
+# __NAME__'s rules (all projects)
+
+## Notes live in the brain
+My second brain is `__BRAIN__` (an Obsidian vault). Start with its `Home.md`.
+
+**ALIVE is the structure.** Everything lives in `__ALIVE__`, organised as walnuts and managed with the `/alive:` skills.
+
+- Any note, task list, plan, summary, research or reference doc I want to keep goes in ALIVE, not in Downloads or the project folder.
+  - New or unsorted notes → `ALIVE/03_Inbox/` (then route with `/alive:capture-context`)
+  - Notes about a specific project → that project's walnut, e.g. `ALIVE/04_Ventures/<project>/`
+  - Courses, articles, reference material → `ALIVE/02_Life/learning/`
+  - A new venture, experiment or person → a new walnut via `/alive:create-walnut`
+- Name files in plain English and link related notes with `[[Note name]]`.
+- When I ask about something I've written down before, search ALIVE first (`/alive:search-world`).
+- When adding a new walnut or important note, add a line for it in `Home.md`.
+
+## HARD RULE: save context to ALIVE before compaction
+- When a hook message says **"ALIVE PRE-COMPACTION SAVE"**, stop and invoke the `alive-presave` skill **before anything else**. No questions. Then run the `mark-saved` command the hook gives, and carry on.
+- If context looks close to full and no hook has fired, run `alive-presave` anyway.
+
+## What stays where it is
+- A project's `CLAUDE.md` and `README.md` stay inside that project's code folder.
+- Claude's memory stays in `~/.claude/projects/.../memory/`.
+- New code projects go in their own folder and get their own GitHub repo. Add a matching walnut in ALIVE for notes about them.
+
+## How I like to work
+<!-- Add your own rules here as you go. Every time you correct Claude twice about the same thing, write it down here. -->
+<!-- context-pack:end -->

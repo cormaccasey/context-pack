@@ -1,0 +1,7 @@
+.DS_Store
+.obsidian/workspace*.json
+.trash/
+.alive/_squirrels/
+.alive/logs/
+*.env
+.env*
