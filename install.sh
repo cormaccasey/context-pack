@@ -8,6 +8,10 @@
 # Safe to re-run: it skips what's already there and never overwrites your notes.
 
 set -u
+# Everything below is wrapped in { } so bash reads the whole script before running it.
+# Without this, `curl | bash` lets commands like `brew install --cask` swallow the
+# rest of the script from stdin and the installer silently stops after Obsidian.
+{
 REPO="${CONTEXT_PACK_REPO:-cormaccasey/context-pack}"
 CLAUDE_DIR="$HOME/.claude"
 TTY=/dev/tty
@@ -58,10 +62,10 @@ fi
 [ -x /usr/local/bin/brew ] && eval "$(/usr/local/bin/brew shellenv)"
 command -v brew >/dev/null || { echo "Homebrew didn't install. Fix that and re-run."; exit 1; }
 for p in git gh jq node python3; do
-  if command -v "$p" >/dev/null; then ok "$p"; else brew install "${p/python3/python}" >/dev/null && ok "$p installed"; fi
+  if command -v "$p" >/dev/null; then ok "$p"; else brew install "${p/python3/python}" </dev/null >/dev/null && ok "$p installed"; fi
 done
-[ -d /Applications/Warp.app ] && ok "Warp" || { brew install --cask warp >/dev/null && ok "Warp installed"; }
-[ -d /Applications/Obsidian.app ] && ok "Obsidian" || { brew install --cask obsidian >/dev/null && ok "Obsidian installed"; }
+[ -d /Applications/Warp.app ] && ok "Warp" || { brew install --cask warp </dev/null >/dev/null && ok "Warp installed"; }
+[ -d /Applications/Obsidian.app ] && ok "Obsidian" || { brew install --cask obsidian </dev/null >/dev/null && ok "Obsidian installed"; }
 fi
 
 # ── 2. Claude Code ────────────────────────────────────────────────────────
@@ -182,3 +186,5 @@ cat <<EOF
 
   Read the why: https://github.com/$REPO#readme
 EOF
+exit 0
+}
